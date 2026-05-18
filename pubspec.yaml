@@ -66,6 +66,10 @@ flutter:
     - assets/images/iconevisualizacao.png
     - assets/images/iconepix.png
     - assets/images/Ellipse.png
+    - assets/images/deposita.png
+    - assets/images/transfere.png
+    - assets/images/pagar.png
+    - assets/images/emprestado.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
