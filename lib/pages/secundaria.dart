@@ -101,7 +101,27 @@ class _SecundariaState extends State<Secundaria> {
                       ),
                     ],
                   ),
-                  SingleChildScrollView(scrollDirection: .vertical),
+                  SizedBox(height: 24),
+                  SingleChildScrollView(
+                    scrollDirection: .vertical,
+                    child: Row(
+                      children: [
+                        GestureDetector(
+                          child: Column(
+                            children: [
+                              Stack(
+                                alignment: .center,
+                                children: [
+                                  Image.asset('assets/images/Ellipse.png'),
+                                  Image.asset('assets/images/iconepix.png'),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ],
