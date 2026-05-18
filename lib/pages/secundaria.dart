@@ -71,10 +71,12 @@ class _SecundariaState extends State<Secundaria> {
         child: Padding(
           padding: EdgeInsetsGeometry.fromLTRB(16, 16, 16, 0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Column(
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         'Conta',
@@ -87,7 +89,19 @@ class _SecundariaState extends State<Secundaria> {
                       Icon(Icons.arrow_forward_ios),
                     ],
                   ),
-                  Row(children: [Text('Cu')]),
+                  Row(
+                    children: [
+                      Text(
+                        'R\${_usuario.carteira.saldo}',
+                        style: GoogleFonts.poppins(
+                          color: Color(0xFF060606),
+                          fontSize: 16,
+                          fontWeight: .bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SingleChildScrollView(scrollDirection: .vertical),
                 ],
               ),
             ],
