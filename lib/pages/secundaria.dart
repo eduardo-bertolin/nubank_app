@@ -15,7 +15,7 @@ class _SecundariaState extends State<Secundaria> {
   late final Usuario _usuario = Usuario(nome: 'Laysa', idade: 30, carteira: _carteira);
   bool _mostrarSaldo = true;
 
-  // Formata o valor monetário no padrão brasileiro (R$ X.XXX,XX) ou oculta
+
   String _formatarMoeda(double valor) {
     if (!_mostrarSaldo) return '••••';
     
@@ -24,7 +24,7 @@ class _SecundariaState extends State<Secundaria> {
     String inteiro = partes[0];
     String decimal = partes[1];
     
-    // Expressão regular para adicionar pontos de milhar
+
     final RegExp reg = RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))');
     inteiro = inteiro.replaceAllMapped(reg, (Match match) => '${match[1]}.');
     
@@ -37,7 +37,7 @@ class _SecundariaState extends State<Secundaria> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         toolbarHeight: 120,
-        backgroundColor: const Color(0xFF830AD1), // Roxo oficial do Nubank
+        backgroundColor: const Color(0xFF830AD1),
         automaticallyImplyLeading: false,
         elevation: 0,
         title: Padding(
@@ -48,7 +48,7 @@ class _SecundariaState extends State<Secundaria> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // Avatar circular premium do usuário
+
                   Container(
                     height: 46,
                     width: 46,
@@ -67,10 +67,10 @@ class _SecundariaState extends State<Secundaria> {
                     ),
                   ),
                   
-                  // Botões de ação à direita
+
                   Row(
                     children: [
-                      // Toggle de visualização de saldo
+
                       IconButton(
                         padding: EdgeInsets.zero,
                         constraints: const BoxConstraints(),
@@ -86,7 +86,6 @@ class _SecundariaState extends State<Secundaria> {
                         },
                       ),
                       const SizedBox(width: 18),
-                      // Ícone de Ajuda
                       Image.asset(
                         'assets/images/iconeajuda.png',
                         width: 24,
@@ -95,7 +94,6 @@ class _SecundariaState extends State<Secundaria> {
                         errorBuilder: (c, e, s) => const Icon(Icons.help_outline, color: Colors.white, size: 24),
                       ),
                       const SizedBox(width: 18),
-                      // Ícone de Convidar/Indicar amigos
                       Image.asset(
                         'assets/images/iconeconvite.png',
                         width: 24,
@@ -128,7 +126,7 @@ class _SecundariaState extends State<Secundaria> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // 1. Seção da Conta
+
               InkWell(
                 onTap: () {},
                 borderRadius: BorderRadius.circular(8),
@@ -171,7 +169,7 @@ class _SecundariaState extends State<Secundaria> {
               ),
               const SizedBox(height: 20),
 
-              // 2. Ações Rápidas (Rolagem Horizontal Fluida)
+
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 physics: const BouncingScrollPhysics(),
@@ -187,7 +185,7 @@ class _SecundariaState extends State<Secundaria> {
               ),
               const SizedBox(height: 8),
 
-              // 3. Botão "Meus Cartões"
+
               GestureDetector(
                 onTap: () {},
                 child: Container(
@@ -218,94 +216,11 @@ class _SecundariaState extends State<Secundaria> {
                 ),
               ),
 
-              // 4. Carrossel de Dicas / Promoções
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                physics: const BouncingScrollPhysics(),
-                child: Row(
-                  children: [
-                    _buildInfoCard(
-                      'Você tem ',
-                      _formatarMoeda(_carteira.emprestimo * 100),
-                      ' disponíveis para empréstimo.',
-                    ),
-                    _buildInfoCard(
-                      'Conquiste sua ',
-                      'independência financeira',
-                      ' investindo a partir de R\$ 1 com o Nu.',
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 24),
+
               
-              const Divider(height: 1, thickness: 1, color: Color(0xFFE2E2E6)),
 
-              // 5. Seção Cartão de Crédito
-              InkWell(
-                onTap: () {},
-                borderRadius: BorderRadius.circular(8),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Cartão de crédito',
-                            style: GoogleFonts.inter(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: const Color(0xFF191919),
-                            ),
-                          ),
-                          const Icon(
-                            Icons.arrow_forward_ios,
-                            size: 14,
-                            color: Color(0xFF7A7A7A),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 12),
-                      Text(
-                        'Fatura atual',
-                        style: GoogleFonts.inter(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: const Color(0xFF7A7A7A),
-                        ),
-                      ),
-                      const SizedBox(height: 6),
-                      Text(
-                        _formatarMoeda(_carteira.fatura),
-                        style: GoogleFonts.inter(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xFF191919),
-                          letterSpacing: -0.5,
-                        ),
-                      ),
-                      const SizedBox(height: 6),
-                      Text(
-                        _mostrarSaldo 
-                            ? 'Limite disponível de ${_formatarMoeda(_carteira.limite)}'
-                            : 'Limite disponível de ••••',
-                        style: GoogleFonts.inter(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w500,
-                          color: const Color(0xFF7A7A7A),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
 
-              const Divider(height: 1, thickness: 1, color: Color(0xFFE2E2E6)),
 
-              // 6. Seção Empréstimo
               InkWell(
                 onTap: () {},
                 borderRadius: BorderRadius.circular(8),
@@ -361,7 +276,7 @@ class _SecundariaState extends State<Secundaria> {
     );
   }
 
-  // Componente de botão de Ação Rápida
+
   Widget _buildActionItem(String titulo, String assetPath) {
     return Padding(
       padding: const EdgeInsets.only(right: 20.0),
@@ -404,7 +319,6 @@ class _SecundariaState extends State<Secundaria> {
     );
   }
 
-  // Componente de Card de Informações / Dicas
   Widget _buildInfoCard(String prefixo, String destaque, String sufixo) {
     return Container(
       width: 250,

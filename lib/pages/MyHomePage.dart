@@ -16,7 +16,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF830AD1), // Nubank Purple oficial
+      backgroundColor: const Color(0xFF830AD1), 
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 32.0),
@@ -24,18 +24,17 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Linha do topo com botão discreto de ajuda
               Align(
                 alignment: Alignment.topRight,
                 child: IconButton(
                   icon: const Icon(Icons.help_outline, color: Colors.white, size: 26),
                   onPressed: () {
-                    // Feedback de ajuda
+
                   },
                 ),
               ),
 
-              // Logo da Nubank Centralizado
+
               Center(
                 child: Hero(
                   tag: 'nubank-logo',
@@ -47,11 +46,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
 
-              // Seção inferior com o botão de ação e textos
+
               Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // Botão de login principal (Pílula branca premium)
+
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
